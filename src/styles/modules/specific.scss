@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Consolas';
+  font-display: swap;
+  src: local('Consolas'), url(../fonts/consolas.ttf) format('truetype');
+}
+
+h1,
+h2 {
+  color: var(--brand-color);
+}
+
+pre:has(> code) {
+  position: relative;
+}
+
+code.language-jsdoc {
+  color: rgb(114, 255, 114);
+}
+
+.token {
+  &.operator {
+    background: none;
+  }
+}
+
+.outline {
+  -webkit-text-fill-color: #000;
+  -webkit-text-stroke-color: currentColor;
+  -webkit-text-stroke-width: 0.02em;
+  text-shadow: 0 0 0.2em;
+}
+
+@keyframes clip-left {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clip-right {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+p-deck:not([mode='speaker']) {
+  @each $dir in left right {
+    p-fragment[aria-hidden='false'] .clip-#{$dir},
+    p-slide[aria-hidden='false'] .clip-#{$dir}:not(p-fragment > .clip-#{$dir}) {
+      animation: clip-#{$dir} var(--fragment-duration, 300ms) $motion-entrance-timing-fn 1 forwards;
+    }
+  }
+}
+
+.code-popover {
+  position: absolute;
+  border: 0.1em solid gray;
+  border-radius: 0.2em;
+  background: inherit;
+  transform: translateY(-100%);
+  margin-top: 1em;
+  margin-left: 1em;
+
+  > pre:not(:last-child) {
+    border-bottom: 0.1em solid gray;
+  }
+}
