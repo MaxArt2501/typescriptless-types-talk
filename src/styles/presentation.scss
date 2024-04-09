@@ -40,7 +40,6 @@
 }
 
 :root {
-  font-family: Work Sans, system-ui, sans-serif;
   --slide-bg: white;
   --sliding-duration: 0ms;
   --fragment-duration: 300ms;
@@ -48,6 +47,8 @@
   --brand-color-ant: #f60;
   --sketchy-arrow-width: 0.1em;
   --sketchy-arrow-tip-size: 20;
+  --base-font-family: Work Sans, system-ui, sans-serif;
+  font-family: var(--base-font-family);
 }
 
 p-deck::after {
@@ -88,12 +89,13 @@ p-fragment.landing {
 }
 
 .cover {
-  --slide-bg: var(--brand-color);
+  --slide-bg: #250a32;
   color: white;
 
   h1 {
     font-size: 1.5em;
     margin-top: 0;
+    color: white;
   }
 
   a {

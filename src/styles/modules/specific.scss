@@ -64,8 +64,44 @@ p-deck:not([mode='speaker']) {
   transform: translateY(-100%);
   margin-top: 1em;
   margin-left: 1em;
+  white-space-collapse: collapse;
 
-  > pre:not(:last-child) {
-    border-bottom: 0.1em solid gray;
+  &#{&}> * {
+    padding: 0.25em 0.5em;
+  }
+
+  > div {
+    font-family: var(--base-font-family);
+  }
+  em {
+    color: inherit;
+  }
+
+  > code[class*='language-'] {
+    display: block;
+    border-radius: 0;
+    line-height: normal;
+  }
+
+  > code:not(:last-child) {
+    border-bottom: 0.1em solid #606060;
+  }
+
+  pre > p-fragment[aria-hidden='true']:is(&) {
+    opacity: 0;
+  }
+  pre[class*='language-']:has(&) {
+    overflow: visible;
+  }
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(100% + 0.5lh);
+    left: 0;
+    width: 2ch;
+    height: 3.1ch;
+    background: url(../img/cursor.svg);
   }
 }

@@ -5,12 +5,95 @@
   </p-fragment>
 </p-slide>
 <p-slide>
+  <h4 class="our-header">We can <em>still</em> replace TS with JSDoc</h4>
+  <div class="two-columns align-center">
+    <p-fragment>
+      <video src="img/butwhy.webm" loop muted autoplay style="width: 100%;"></video>
+    </p-fragment>
+    <p-fragment>
+      <ul class="revert">
+        <li>No build step</li>
+        <li>Simpler types</li>
+        <li>More complete documentation</li>
+      </ul>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
   <h4 class="our-header">Turns out they work well together</h4>
   <pre class="self-center"><code class="language-jsdoc">/**
  * This holds the total due value.
  * @type {number}
  */</code>
 <code class="language-js">let total;</code><p-fragment
-  class="code-popover" style="top: 4lh; left: 8ch"><code
-    class="language-typescript">let total: number</code></p-fragment></pre>
+  class="code-popover" style="top: 4lh; left: 7ch"><code
+    class="language-typescript">let total: number</code>
+    <div>This holds the total due value.</div>
+    <div><em>@type</em> &mdash; {number}</div></p-fragment></pre>
+  <p-fragment index="-1">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the double asterisk of the opening comment block"
+      class="from-above"
+      style="top: 45%; width: 1em; left: 31.5%; height: 0.8em;"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'number' type on the popover"
+      class="from-above"
+      style="top: 46%; width: 3em; left: 49%; height: 1em;"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the variable description on the popover"
+      class="from-above"
+      style="top: 52%; width: 10em; left: 35%; height: 1.2em;"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@type</code></h3>
+  <p>Supports both TypeScript and JSDoc's syntax</p>
+  <div class="two-columns align-center" style="justify-content: space-around;">
+    <pre style="width: fit-content;"><code class="language-jsdoc">/** @type {?} */</code>
+<code class="language-js">let result;</code></pre>
+    <p-fragment>
+      <div class="sketchy-arrow" style="top: 55%; left: 26%; width: 4.5em; rotate: -27deg;"></div>
+      <ul style="font-size: 60%; line-height: 1.5;">
+        <li>&bullet;&nbsp;<code>string</code>, <code>number</code>, &hellip;</li>
+        <li>&bullet;&nbsp;<code>object</code>, <code>any</code>, &hellip;</li>
+        <li>&bullet;&nbsp;<code>Object.&lt;string, number></code></li>
+        <li>&bullet;&nbsp;<code>{ ok: boolean; msg: string }</code></li>
+        <li>&bullet;&nbsp;<code>'on' | 'off'</code></li>
+        <li>&bullet;&nbsp;<code>PromiseLike&lt;Car></code></li>
+        <li>&bullet;&nbsp;&hellip;</li>
+      </ul>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@typedef</code></h3>
+  <p>Lets us define interfaces</p>
+  <div class="two-columns">
+    <pre><code class="language-jsdoc">/**
+ * @typedef {Object} Car
+ * @property {string} brand
+ * @property {number} year
+ * @property {Object} engine
+ * @property {string} engine.type
+ * @property {number} engine.power
+ */</code></pre>
+    <pre><code class="language-typescript">interface Car {
+  brand: string;
+  year: number;
+  engine: {
+    type: string,
+    power: number
+  }
+}</code></pre>
+  </div>
 </p-slide>

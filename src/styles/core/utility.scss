@@ -240,10 +240,13 @@ $fade-border-image-y: linear-gradient(
 
 .stack:not(p-slide[aria-hidden='true']) {
   display: grid;
-  grid-template-areas: 'here';
   place-items: stretch;
 
   > * {
-    grid-area: here;
+    grid-area: 1 / 1;
   }
+}
+
+.revert {
+  all: revert-layer;
 }
