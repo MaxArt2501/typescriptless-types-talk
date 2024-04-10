@@ -1,8 +1,8 @@
 # TypeScriptless types
 
-Slides for a talk about modern CSS methodology. ## slides, about 30 minutes.
+Slides for a talk about using JSDoc for your application types. 15 slides, about 7 minutes.
 
-Originally conceived for the [2024 Italian CSS Day](https://2024.cssday.it/) (in Italian), Faenza, 2024-04-05.
+Originally conceived for the [2024 Italian JS Day](https://2024.jsday.it/), Verona, 2024-04-11/12.
 
 Built on top of [P-Slides](https://github.com/MaxArt2501/p-slides)!
 
