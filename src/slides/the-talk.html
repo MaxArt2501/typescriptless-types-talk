@@ -8,7 +8,7 @@
   <h4 class="our-header">We can <em>still</em> replace TS with JSDoc</h4>
   <div class="two-columns align-center">
     <p-fragment>
-      <video src="img/butwhy.webm" loop muted autoplay style="width: 100%;"></video>
+      <video src="img/butwhy.webm" loop muted autoplay style="width: 100%"></video>
     </p-fragment>
     <p-fragment>
       <ul class="revert">
@@ -35,7 +35,7 @@
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
       alt="A marker circle around the double asterisk of the opening comment block"
       class="from-above"
-      style="top: 45%; width: 1em; left: 31.5%; height: 0.8em;"
+      style="top: 45%; width: 1em; left: 31.5%; height: 0.8em"
     />
   </p-fragment>
   <p-fragment>
@@ -43,7 +43,7 @@
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
       alt="A marker circle around the 'number' type on the popover"
       class="from-above"
-      style="top: 46%; width: 3em; left: 49%; height: 1em;"
+      style="top: 46%; width: 3em; left: 49%; height: 1em; z-index: 1"
     />
   </p-fragment>
   <p-fragment>
@@ -51,19 +51,19 @@
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
       alt="A marker circle around the variable description on the popover"
       class="from-above"
-      style="top: 52%; width: 10em; left: 35%; height: 1.2em;"
+      style="top: 52%; width: 10em; left: 35%; height: 1.2em; z-index: 1"
     />
   </p-fragment>
 </p-slide>
 <p-slide>
   <h3 class="our-header"><code>@type</code></h3>
   <p>Supports both TypeScript and JSDoc's syntax</p>
-  <div class="two-columns align-center" style="justify-content: space-around;">
-    <pre style="width: fit-content;"><code class="language-jsdoc">/** @type {?} */</code>
+  <div class="two-columns align-center" style="justify-content: space-around">
+    <pre style="width: fit-content"><code class="language-jsdoc">/** @type {?} */</code>
 <code class="language-js">let result;</code></pre>
     <p-fragment>
-      <div class="sketchy-arrow" style="top: 55%; left: 26%; width: 4.5em; rotate: -27deg;"></div>
-      <ul style="font-size: 60%; line-height: 1.5;">
+      <div class="the-arrow" style="top: 45%; left: 29.5%; width: 2.9em; rotate: 70deg"></div>
+      <ul style="font-size: 60%; line-height: 1.5">
         <li>&bullet;&nbsp;<code>string</code>, <code>number</code>, &hellip;</li>
         <li>&bullet;&nbsp;<code>object</code>, <code>any</code>, &hellip;</li>
         <li>&bullet;&nbsp;<code>Object.&lt;string, number></code></li>
@@ -77,23 +77,237 @@
 </p-slide>
 <p-slide>
   <h3 class="our-header"><code>@typedef</code></h3>
-  <p>Lets us define interfaces</p>
-  <div class="two-columns">
+  <p>Lets us define interfaces/type aliases</p>
+  <div class="flex justify-around align-center">
     <pre><code class="language-jsdoc">/**
  * @typedef {Object} Car
  * @property {string} brand
  * @property {number} year
  * @property {Object} engine
  * @property {string} engine.type
- * @property {number} engine.power
- */</code></pre>
-    <pre><code class="language-typescript">interface Car {
+ * @property {number} engine.power In kilowatts
+ */</code><p-fragment class="code-popover" style="top: 1lh; left: 22ch"><code class="language-typescript">type Car {
   brand: string;
   year: number;
   engine: {
-    type: string,
-    power: number
+    type: string;
+    power: number;
   }
-}</code></pre>
+}</code></p-fragment></pre>
+    <p-fragment>
+      <div class="the-arrow" style="top: 45%; left: 53%; width: 3em; rotate: 45deg"></div>
+      <pre><code class="language-jsdoc">/** @type {Car} */</code><code class="language-js">
+let car;
+
+car.engine
+  .power;</code><p-fragment class="code-popover" style="top: 4lh; left: 3ch"><code class="language-typescript">(property) power: number</code>
+<div>In kilowatts</div></p-fragment></pre>
+    </p-fragment>
   </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'In kilowatts' property description in JSDoc's declaration"
+      class="from-above"
+      style="top: 77%; width: 4.5em; left: 45%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'In kilowatts' property description in TypeScript's declaration"
+      class="from-above"
+      style="top: 68%; width: 4em; left: 74%; height: 1em; z-index: 1"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">For functions and methods</h3>
+  <pre class="self-start"><code class="language-jsdoc">/**
+ * Returns the QR code of a given message
+ * @param {string} message The message to be encoded
+ * @param {number} [level] Error correction level, optional (0-3)
+ * @return {number[][]}    Square matrix of 0/1
+ * @throws {RangeError}    If the message is too large
+ */</code>
+<code class="language-js">const getQRCode = (message, level) => {
+  ...
+}</code><p-fragment index="1" class="code-popover" style="top: 7lh; left: 7ch"><code class="language-typescript">const getQRCode: (message: string, level?: number | undefined) => number[][]</code>
+  <div>Returns the QR code of a given message</div>
+  <div><em>@param</em> <code>message</code> — The message to be encoded</div>
+  <div><em>@param</em> <code>level</code> — Error correction level, optional (0-3)</div>
+  <div><em>@return</em> — Square matrix of 0/1</div>
+  <div><em>@throws</em> — {RangeError} If the message is too large</div>
+</p-fragment></pre>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 44%; width: 2.5em; left: 7.5%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '[level]' optional property in JSDoc's declaration"
+      class="from-above"
+      style="top: 49.5%; width: 2.5em; left: 25.7%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 55%; width: 2.7em; left: 8%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 60.5%; width: 2.7em; left: 8%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Can do overloads</h3>
+  <div class="flex align-center justify-between">
+    <pre><code class="language-jsdoc">/**
+ * Double a number or repeat a string twice
+ * @param {number | string} value The value to be doubled
+ * @returns {number | string} The doubled value
+ * @type {{
+ *   (value: number): number;
+ *   (value: string): string;
+ * }}
+ */</code>
+<code class="language-js">const double = (value) => value + value;</code><p-fragment class="code-popover" style="top: 9lh; left: 7ch"><code class="language-typescript">const double: {
+  (value: number): number;
+  (value: string): string;
+}</code>
+<div>Double a number or repeat a string twice</div>
+<div><em>@param</em> <code>value</code> — The value to be doubled</div>
+<div><em>@returns</em> — The doubled value</div>
+<div><em>@type</em><br>
+{{</div>
+<ul style="list-style: disc inside; margin: 0;">
+  <li>(value: number): number;</li>
+  <li>(value: string): string;</li>
+  <li>}}</li>
+</ul></p-fragment></pre>
+    <p-fragment index="1">
+      <pre><code class="language-js">const a
+  = double('foo');
+
+const b
+  = double(42);</code><p-fragment index="2"
+  class="code-popover" style="top: 0lh; left: 6ch"><code class="language-typescript">const a: string</code></p-fragment><p-fragment index="2"
+  class="code-popover" style="top: 3lh; left: 6ch"><code class="language-typescript">const b: number</code></p-fragment></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 10%; width: 10em; left: 9%; height: 3em; z-index: 2"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the big mess of the '@type' decorator in VSCode's popover"
+      class="from-above"
+      style="top: 43%; width: 12em; left: 5%; height: 7em; z-index: 2"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Even generics!</h3>
+  <div class="flex align-center justify-around">
+    <pre><code class="language-jsdoc">/**
+ * @typedef {{
+ *   item: T;
+ *   unwrap: () => T;
+ * }} Wrapped&lt;T>
+ * @template T
+ */</code></pre>
+    <p-fragment>
+      <div class="the-arrow" style="top: 43%; rotate: 64deg; left: 35%; width: 2em"></div>
+      <pre><code class="language-jsdoc">/**
+ * Wrap an item
+ * @param {T} item The item to be wrapped
+ * @returns {Wrapped&lt;T>} The wrapped item
+ * @template T
+ */</code>
+<code class="language-js">const wrap = (item) => /*...*/;</code><p-fragment index="2"
+class="code-popover" style="top: 6lh; left: 7ch"><code class="language-typescript">const wrap: &lt;T>(item: T) => Wrapped&lt;T></code>
+  <div>Wrap an item</div>
+  <div><em>@param</em> <code>item</code> — The item to be wrapped</div>
+  <div><em>@returns</em> — The wrapped item</div>
+  <div><em>@template</em> <code>T</code></div></p-fragment></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Type casting! 🧙‍♂️</h4>
+  <div class="self-center">
+    <pre><code class="language-typescript">// TypeScript
+document.addEventListener('click', event => {
+  console.log((event.target as Element).id);
+});</code></pre>
+    <p-fragment>
+      <img
+        src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+        alt="A marker circle around the 'as Element' type casting before event.target"
+        class="from-above"
+        style="top: 44.5%; width: 4em; left: 47%; height: 1em"
+      />
+    </p-fragment>
+    <p-fragment>
+      <pre><code class="language-js">// JavaScript
+document.addEventListener('click', event => {
+  console.log(</code><code class="language-jsdoc">/** @type {Element} */</code><code class="language-js"> (event.target).id);
+});</code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the opening parenthesis before event.target"
+      class="from-above"
+      style="top: 74.7%; width: 0.5em; left: 59.5%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the closing parenthesis after event.target"
+      class="from-above"
+      style="top: 74.7%; width: 0.5em; left: 73.7%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Constants? We got you.</h3>
+  <div class="stack">
+    <pre><code class="language-jsdoc">/** @type {42} */</code>
+<code class="language-js">const ANSWER = 42;</code></pre>
+    <p-fragment>
+      <pre><code class="language-jsdoc">/** @type {['debug', 'info', 'warning', 'error', 'critical', 'fatal']} */</code>
+<code class="language-js">const LOG_LEVELS = ['debug', 'info', 'warning', 'error', 'critical', 'fatal'];</code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment class="big-x" style="top: 29%; left: 35%; width: 8em"></p-fragment>
+  <p-fragment>
+    <pre><code class="language-js">const LOG_LEVELS = </code><code class="language-jsdoc">/** @type {const} */</code>
+  <code class="language-js">(['debug', 'info', 'warning', 'error', 'critical', 'fatal']);</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'const' type casting"
+      class="from-above"
+      style="top: 65.5%; width: 2.5em; left: 36.7%; height: 1em"
+    />
+  </p-fragment>
 </p-slide>

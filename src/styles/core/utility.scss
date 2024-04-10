@@ -19,6 +19,11 @@
     justify-content: $alignment;
   }
 }
+@each $space in around between evenly {
+  .justify-#{$space} {
+    justify-content: space-#{$space};
+  }
+}
 
 .bold {
   font-weight: bold;

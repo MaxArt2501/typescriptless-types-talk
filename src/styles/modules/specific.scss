@@ -15,11 +15,20 @@ pre:has(> code) {
 
 code.language-jsdoc {
   color: rgb(114, 255, 114);
+
+  .token.parameter {
+    color: rgb(151, 255, 255);
+  }
 }
 
 .token {
   &.operator {
     background: none;
+  }
+  &.class-name {
+    > .punctuation + .operator {
+      color: rgb(114, 255, 114);
+    }
   }
 }
 
@@ -65,8 +74,9 @@ p-deck:not([mode='speaker']) {
   margin-top: 1em;
   margin-left: 1em;
   white-space-collapse: collapse;
+  z-index: 1;
 
-  &#{&}> * {
+  &#{&} > * {
     padding: 0.25em 0.5em;
   }
 
@@ -94,7 +104,6 @@ p-deck:not([mode='speaker']) {
     overflow: visible;
   }
 
-
   &::before {
     content: '';
     position: absolute;
@@ -104,4 +113,12 @@ p-deck:not([mode='speaker']) {
     height: 3.1ch;
     background: url(../img/cursor.svg);
   }
+}
+
+.the-arrow {
+  background: url(../img/arrow.svg);
+  aspect-ratio: 140/242;
+  position: absolute;
+  width: 2em;
+  z-index: 1;
 }
