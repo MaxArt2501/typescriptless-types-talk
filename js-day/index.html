@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScriptless types</title>
+    <base href=".." />
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="vendor/prismjs/themes/prism.css" />
+    <link rel="stylesheet" href="vendor/prismjs/themes/prism-okaidia.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/print.css" media="print" />
+    <link rel="stylesheet" href="css/presentation.css" />
+  </head>
+
+  <body>
+    <p-deck> <!--slide:cover--><p-slide class="cover">
+  <img src="img/logo-gellify.svg" alt="GELLIFY Logo" class="full-media" />
+  <h1>TypeScriptless types<br /><small>(&hellip; but not really)</small></h1>
+  <figure>
+    <img src="img/js-day.svg" alt="JS Day Logo" />
+    <figcaption>Verona, <time datetime="2024-04-11">2024-04-11/12</time></figcaption>
+  </figure>
+  <h4>
+    Massimo Artizzu
+    <small>Web Architect, <a href="https://gellify.com/" class="gellify">Gellify</a></small>
+  </h4>
+</p-slide>
+<p-slide class="justify-start">
+  <gfy-blob
+    clearcoatroughness="0.4"
+    clearcoat="0.23"
+    clearcolor="white"
+    color="#2a0b29"
+    envmap="img/envmap.jpg"
+    envmapintensity="0.95"
+    fixnormals=""
+    frequency="0.01"
+    metalness="0.64"
+    numberofwaves="1.47"
+    reflectivity="1"
+    roughness="0"
+    surfacepoleamount="1"
+    surfacedistort="3.2"
+    surfacefrequency="0.97"
+    surfacespeed="0.5"
+  >
+    <gfy-spotlight color="#c556c6" intensity="2.68" distance="14.47" angle="0.85" penumbra="0.45" decay="0.24" x="-4.47" y="2.4" z="0.53"></gfy-spotlight>
+    <gfy-spotlight color="#30ffe2" intensity="2.08" distance="8.73" angle="0.63" penumbra="1" decay="0" x="-1.6" y="-5.33" z="3.67"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="2.03" distance="0" angle="0.35" penumbra="1" decay="1" x="6.13" y="2.67" z="2.13"></gfy-spotlight>
+    <gfy-spotlight color="#ff4cfa" intensity="1.25" distance="7" angle="0.82" penumbra="1" decay="0.5" x="0.53" y="2.4" z="3.4"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="0.63" distance="7" angle="0.79" penumbra="1" decay="0.5" x="-3" y="-3" z="6.2"></gfy-spotlight>
+  </gfy-blob>
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face" />
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web Architect<br />
+      @<a href="https://gellify.com" class="gellify">Gellify</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <a href="https://github.com/MaxArt2501"><img src="img/github.svg" alt="GitHub logo" /></a> /
+      <a href="https://mastodon.social/MaxArt2501"><img src="img/mastodon.svg" alt="Mastodon logo" /></a> /
+      <a href="https://twitter.com/MaxArt2501"><img src="img/twitter.svg" alt="Twitter logo" /></a> /
+      <a href="https://dev.to/MaxArt2501"><img src="img/dev-to.svg" alt="dev.to logo" /></a>
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide style="--slide-bg: #250a32">
+  <a href="https://gellify.bamboohr.com/careers" target="_blank" rel="noopener">
+    <img
+      src="img/join-us.jpg"
+      alt="Picture with title 'GELLIFY ITALIA Work with us: Scan the QRcode to join our Purple Team' followed by a QR Code pointing to https://gellify.bamboohr.com/careers"
+      class="full-media"
+    />
+  </a>
+</p-slide>
+<p-slide class="center">
+  <h3>You can find these slides at</h3>
+  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
+  <a href="https://maxart2501.github.io/typescriptless-types-talk/js-day/">maxart2501.github.io/typescriptless-types-talk/js-day/</a>
+</p-slide><!--/slide:cover-->
+<!--slide:the-talk--><p-slide>
+  <h3 class="center">Before TypeScript&hellip;</h3>
+  <p-fragment>
+    <h1 class="center">JSDoc</h1>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">We can <em>still</em> replace TS with JSDoc</h4>
+  <div class="two-columns align-center">
+    <p-fragment>
+      <video src="img/butwhy.webm" loop muted autoplay style="width: 100%"></video>
+    </p-fragment>
+    <p-fragment>
+      <ul class="revert">
+        <li>No build step</li>
+        <li>Simpler types</li>
+        <li>More complete documentation</li>
+      </ul>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Turns out they work well together</h4>
+  <pre class="self-center"><code class="language-jsdoc">/**
+ * This holds the total due value.
+ * @type {number}
+ */</code>
+<code class="language-js">let total;</code><p-fragment
+  class="code-popover" style="top: 4lh; left: 7ch"><code
+    class="language-typescript">let total: number</code>
+    <div>This holds the total due value.</div>
+    <div><em>@type</em> &mdash; {number}</div></p-fragment></pre>
+  <p-fragment index="-1">
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the double asterisk of the opening comment block"
+      class="from-above"
+      style="top: 45%; width: 1em; left: 31.5%; height: 0.8em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'number' type on the popover"
+      class="from-above"
+      style="top: 46%; width: 3em; left: 49%; height: 1em; z-index: 1"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the variable description on the popover"
+      class="from-above"
+      style="top: 52%; width: 10em; left: 35%; height: 1.2em; z-index: 1"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@type</code></h3>
+  <p>Supports both TypeScript and JSDoc's syntax</p>
+  <div class="two-columns align-center" style="justify-content: space-around">
+    <pre style="width: fit-content"><code class="language-jsdoc">/** @type {?} */</code>
+<code class="language-js">let result;</code></pre>
+    <p-fragment>
+      <div class="the-arrow" style="top: 45%; left: 29.5%; width: 2.9em; rotate: 70deg"></div>
+      <ul style="font-size: 60%; line-height: 1.5">
+        <li>&bullet;&nbsp;<code>string</code>, <code>number</code>, &hellip;</li>
+        <li>&bullet;&nbsp;<code>object</code>, <code>any</code>, &hellip;</li>
+        <li>&bullet;&nbsp;<code>Object.&lt;string, number></code></li>
+        <li>&bullet;&nbsp;<code>{ ok: boolean; msg: string }</code></li>
+        <li>&bullet;&nbsp;<code>'on' | 'off'</code></li>
+        <li>&bullet;&nbsp;<code>PromiseLike&lt;Car></code></li>
+        <li>&bullet;&nbsp;&hellip;</li>
+      </ul>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@typedef</code></h3>
+  <p>Lets us define interfaces/type aliases</p>
+  <div class="flex justify-around align-center">
+    <pre><code class="language-jsdoc">/**
+ * @typedef {Object} Car
+ * @property {string} brand
+ * @property {number} year
+ * @property {Object} engine
+ * @property {string} engine.type
+ * @property {number} engine.power In kilowatts
+ */</code><p-fragment class="code-popover" style="top: 1lh; left: 22ch"><code class="language-typescript">type Car {
+  brand: string;
+  year: number;
+  engine: {
+    type: string;
+    power: number;
+  }
+}</code></p-fragment></pre>
+    <p-fragment>
+      <div class="the-arrow" style="top: 45%; left: 53%; width: 3em; rotate: 45deg"></div>
+      <pre><code class="language-jsdoc">/** @type {Car} */</code><code class="language-js">
+let car;
+
+car.engine
+  .power;</code><p-fragment class="code-popover" style="top: 4lh; left: 3ch"><code class="language-typescript">(property) power: number</code>
+<div>In kilowatts</div></p-fragment></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'In kilowatts' property description in JSDoc's declaration"
+      class="from-above"
+      style="top: 77%; width: 4.5em; left: 45%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'In kilowatts' property description in TypeScript's declaration"
+      class="from-above"
+      style="top: 68%; width: 4em; left: 74%; height: 1em; z-index: 1"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">For functions and methods</h3>
+  <pre class="self-start"><code class="language-jsdoc">/**
+ * Returns the QR code of a given message
+ * @param {string} message The message to be encoded
+ * @param {number} [level] Error correction level, optional (0-3)
+ * @return {number[][]}    Square matrix of 0/1
+ * @throws {RangeError}    If the message is too large
+ */</code>
+<code class="language-js">const getQRCode = (message, level) => {
+  ...
+}</code><p-fragment index="1" class="code-popover" style="top: 7lh; left: 7ch"><code class="language-typescript">const getQRCode: (message: string, level?: number | undefined) => number[][]</code>
+  <div>Returns the QR code of a given message</div>
+  <div><em>@param</em> <code>message</code> — The message to be encoded</div>
+  <div><em>@param</em> <code>level</code> — Error correction level, optional (0-3)</div>
+  <div><em>@return</em> — Square matrix of 0/1</div>
+  <div><em>@throws</em> — {RangeError} If the message is too large</div>
+</p-fragment></pre>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 44%; width: 2.5em; left: 7.5%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '[level]' optional property in JSDoc's declaration"
+      class="from-above"
+      style="top: 49.5%; width: 2.5em; left: 25.7%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 55%; width: 2.7em; left: 8%; height: 1em"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 60.5%; width: 2.7em; left: 8%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Can do overloads</h3>
+  <div class="flex align-center justify-between">
+    <pre><code class="language-jsdoc">/**
+ * Double a number or repeat a string twice
+ * @param {number | string} value The value to be doubled
+ * @returns {number | string} The doubled value
+ * @type {{
+ *   (value: number): number;
+ *   (value: string): string;
+ * }}
+ */</code>
+<code class="language-js">const double = (value) => value + value;</code><p-fragment class="code-popover" style="top: 9lh; left: 7ch"><code class="language-typescript">const double: {
+  (value: number): number;
+  (value: string): string;
+}</code>
+<div>Double a number or repeat a string twice</div>
+<div><em>@param</em> <code>value</code> — The value to be doubled</div>
+<div><em>@returns</em> — The doubled value</div>
+<div><em>@type</em><br>
+{{</div>
+<ul style="list-style: disc inside; margin: 0;">
+  <li>(value: number): number;</li>
+  <li>(value: string): string;</li>
+  <li>}}</li>
+</ul></p-fragment></pre>
+    <p-fragment index="1">
+      <pre><code class="language-js">const a
+  = double('foo');
+
+const b
+  = double(42);</code><p-fragment index="2"
+  class="code-popover" style="top: 0lh; left: 6ch"><code class="language-typescript">const a: string</code></p-fragment><p-fragment index="2"
+  class="code-popover" style="top: 3lh; left: 6ch"><code class="language-typescript">const b: number</code></p-fragment></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the '@param' decorator in JSDoc's declaration"
+      class="from-above"
+      style="top: 10%; width: 10em; left: 9%; height: 3em; z-index: 2"
+    />
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the big mess of the '@type' decorator in VSCode's popover"
+      class="from-above"
+      style="top: 43%; width: 12em; left: 5%; height: 7em; z-index: 2"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Even generics!</h3>
+  <div class="flex align-center justify-around">
+    <pre><code class="language-jsdoc">/**
+ * @typedef {{
+ *   item: T;
+ *   unwrap: () => T;
+ * }} Wrapped&lt;T>
+ * @template T
+ */</code></pre>
+    <p-fragment>
+      <div class="the-arrow" style="top: 43%; rotate: 64deg; left: 35%; width: 2em"></div>
+      <pre><code class="language-jsdoc">/**
+ * Wrap an item
+ * @param {T} item The item to be wrapped
+ * @returns {Wrapped&lt;T>} The wrapped item
+ * @template T
+ */</code>
+<code class="language-js">const wrap = (item) => /*...*/;</code><p-fragment index="2"
+class="code-popover" style="top: 6lh; left: 7ch"><code class="language-typescript">const wrap: &lt;T>(item: T) => Wrapped&lt;T></code>
+  <div>Wrap an item</div>
+  <div><em>@param</em> <code>item</code> — The item to be wrapped</div>
+  <div><em>@returns</em> — The wrapped item</div>
+  <div><em>@template</em> <code>T</code></div></p-fragment></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Type casting! 🧙‍♂️</h4>
+  <div class="self-center">
+    <pre><code class="language-typescript">// TypeScript
+document.addEventListener('click', event => {
+  console.log((event.target as Element).id);
+});</code></pre>
+    <p-fragment>
+      <img
+        src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+        alt="A marker circle around the 'as Element' type casting before event.target"
+        class="from-above"
+        style="top: 44.5%; width: 4em; left: 47%; height: 1em"
+      />
+    </p-fragment>
+    <p-fragment>
+      <pre><code class="language-js">// JavaScript
+document.addEventListener('click', event => {
+  console.log(</code><code class="language-jsdoc">/** @type {Element} */</code><code class="language-js"> (event.target).id);
+});</code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the opening parenthesis before event.target"
+      class="from-above"
+      style="top: 74.7%; width: 0.5em; left: 59.5%; height: 1em"
+    />
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the closing parenthesis after event.target"
+      class="from-above"
+      style="top: 74.7%; width: 0.5em; left: 73.7%; height: 1em"
+    />
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Constants? We got you.</h3>
+  <div class="stack">
+    <pre><code class="language-jsdoc">/** @type {42} */</code>
+<code class="language-js">const ANSWER = 42;</code></pre>
+    <p-fragment>
+      <pre><code class="language-jsdoc">/** @type {['debug', 'info', 'warning', 'error', 'critical', 'fatal']} */</code>
+<code class="language-js">const LOG_LEVELS = ['debug', 'info', 'warning', 'error', 'critical', 'fatal'];</code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment class="big-x" style="top: 29%; left: 35%; width: 8em"></p-fragment>
+  <p-fragment>
+    <pre><code class="language-js">const LOG_LEVELS = </code><code class="language-jsdoc">/** @type {const} */</code>
+  <code class="language-js">(['debug', 'info', 'warning', 'error', 'critical', 'fatal']);</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the 'const' type casting"
+      class="from-above"
+      style="top: 65.5%; width: 2.5em; left: 36.7%; height: 1em"
+    />
+  </p-fragment>
+</p-slide><!--/slide:the-talk-->
+<!--slide:the-end--><p-slide>
+  <h1 class="center"><span>That's all, folks!</span><br />👋</h1>
+</p-slide>
+<p-slide class="gradient-4">
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/typescriptless-types-talk/css-day/"> maxart2501.github.io/typescriptless-types-talk/css-day/ </a>
+    <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" />
+  </h3>
+</p-slide><!--/slide:the-end-->
+</p-deck>
+    <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="Presentation progress"></div>
+    <div role="toolbar" class="presentation-toolbar">
+      <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+        <svg viewBox="0 0 1 1">
+          <path stroke-width="0.1" stroke="currentColor" fill="none" d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25" />
+        </svg>
+      </button>
+      <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+        <svg viewBox="0 0 1 1">
+          <g stroke="currentColor" fill="none" stroke-width="0.1">
+            <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25" />
+            <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25" />
+          </g>
+        </svg>
+      </button>
+    </div>
+    <nav class="presentation-nav">
+      <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+      <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+    </nav>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/presentation.js"></script>
+    <script defer type="module" src="js/blob.js"></script>
+    <script defer src="vendor/prismjs/prism.js"></script>
+    <script defer src="vendor/prismjs/components/prism-javadoclike.js"></script>
+    <script defer src="vendor/prismjs/components/prism-typescript.js"></script>
+    <script defer src="vendor/prismjs/components/prism-jsdoc.js"></script>
+  </body>
+</html>
