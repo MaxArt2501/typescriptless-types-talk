@@ -309,6 +309,36 @@ const b
   </p-fragment>
 </p-slide>
 <p-slide>
+  <pre class="self-center"><code class="language-jsdoc">/**
+ * @overload
+ * @param {number} value
+ * @returns {number}
+ */
+ /**
+ * @overload
+ * @param {string} value
+ * @returns {string}
+ */
+ /**
+ * Double a number or repeat a string twice
+ * @param {number | string} value The value to be doubled
+ * @returns {number | string} The doubled value
+ */</code>
+<code class="language-js">function double(value) { return value + value; }</code><p-fragment
+  class="code-popover" style="top: 15lh; left: 10ch"><code class="language-typescript">function double(value: number): number (+1 overload)</code></p-fragment></pre>
+  <p-fragment><div class="from-above" style="
+  background: rgb(97, 97, 255); color: white; position: absolute;
+  top: 15%;
+  left: 55%;
+  width: 5em;
+  height: 5em;
+  display: flex;
+  rotate: -30deg;
+  padding: 0.5em;
+  align-items: end;
+  justify-content: end;">TS 5.0+</small></div></p-fragment>
+</p-slide>
+<p-slide>
   <h3 class="our-header">Even generics!</h3>
   <div class="flex align-center justify-around">
     <pre><code class="language-jsdoc">/**
