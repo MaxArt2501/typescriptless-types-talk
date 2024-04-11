@@ -30,6 +30,9 @@ code.language-jsdoc {
       color: rgb(114, 255, 114);
     }
   }
+  &.constant {
+    color: #ff71a4
+  }
 }
 
 .outline {
