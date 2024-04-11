@@ -1,6 +1,6 @@
 # TypeScriptless types
 
-Slides for a talk about using JSDoc for your application types. 15 slides, about 7 minutes.
+Slides for a talk about using JSDoc for your application types. 17 slides, about 8 minutes.
 
 Originally conceived for the [2024 Italian JS Day](https://2024.jsday.it/), Verona, 2024-04-11/12.
 
